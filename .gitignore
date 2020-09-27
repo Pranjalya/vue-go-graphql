@@ -1,0 +1,28 @@
+client/.DS_Store
+client/node_modules
+client/dist
+
+client/tests/e2e/reports/
+client/selenium-debug.log
+client/chromedriver.log
+client/geckodriver.log
+
+
+# local env files
+client/.env.local
+client/.env.*.local
+
+# Log files
+client/npm-debug.log*
+client/yarn-debug.log*
+client/yarn-error.log*
+client/pnpm-debug.log*
+
+# Editor directories and files
+client/.idea
+client/.vscode
+client/*.suo
+client/*.ntvs*
+client/*.njsproj
+client/*.sln
+client/*.sw?
