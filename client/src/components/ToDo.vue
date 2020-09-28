@@ -1,6 +1,5 @@
 <template>
   <div class="main">
-    <h1>{{ msg }}</h1>
     <h1>ToDo Application</h1>
     <div class="form-container">
       <form>
@@ -32,23 +31,37 @@
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
+import TodoActions from "../services/TodoActions";
 
 @Options({
   props: {
-    msg: String,
+    username: String,
   },
 })
 export default class ToDo extends Vue {
-  msg!: string;
+  username!: string;
   text!: string;
   warning = false;
+  todos = [];
+
+  public fetchAllItems(): void {
+    TodoActions.queryTodoItems().then(data => {
+      console.log(data)
+      this.todos = data.data.todos
+    }).catch(err => console.log)
+  }
 
   public addTodo(): void {
     if (this.text == undefined) {
       this.warning = true;
     } else {
       this.warning = false;
-      // this.addTodoItem(this.text);
+      TodoActions.addTodoItem(this.text, this.username)
+        .then((data) => {
+          console.log("Data", data);
+          this.fetchAllItems();
+        })
+        .catch(err => console.log);
     }
   }
 
