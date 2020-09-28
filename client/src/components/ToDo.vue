@@ -46,8 +46,8 @@ export default class ToDo extends Vue {
 
   public fetchAllItems(): void {
     TodoActions.queryTodoItems().then(data => {
-      console.log(data)
-      this.todos = data.data.todos
+      console.log("All todos", data.data.data.todos)
+      this.todos = data.data.data.todos
     }).catch(err => console.log)
   }
 
@@ -57,8 +57,8 @@ export default class ToDo extends Vue {
     } else {
       this.warning = false;
       TodoActions.addTodoItem(this.text, this.username)
-        .then((data) => {
-          console.log("Data", data);
+        .then(data => {
+          console.log("Data", data.data.data.createTodo);
           this.fetchAllItems();
         })
         .catch(err => console.log);
@@ -67,6 +67,10 @@ export default class ToDo extends Vue {
 
   get getWarning(): boolean {
     return this.warning;
+  }
+
+  mounted() {
+    this.fetchAllItems();
   }
 }
 </script>
