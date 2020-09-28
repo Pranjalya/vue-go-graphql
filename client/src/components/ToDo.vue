@@ -16,14 +16,16 @@
       <p v-if="getWarning" class="alert-text">Todo note can not be empty!</p>
     </div>
     <div class="todo-container">
-      <div class="todo-item todo-item-checked">
-        <p>Build a Todo App</p>
-        <button id="checked-btn" class="todo-btn">
-          <i class="fas fa-clipboard-check"></i>
-        </button>
-        <button id="delete-btn" class="todo-btn">
-          <i class="far fa-trash-alt"></i>
-        </button>
+      <div v-for="todo in todos" v-bind:key="todo.id">
+        <div :class="todo.done ? 'todo-item todo-item-checked' : 'todo-item'">
+          <p>{{ todo.text }}</p>
+          <button id="checked-btn" class="todo-btn">
+            <i class="fas fa-clipboard-check"></i>
+          </button>
+          <button id="delete-btn" class="todo-btn">
+            <i class="far fa-trash-alt"></i>
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -45,10 +47,12 @@ export default class ToDo extends Vue {
   todos = [];
 
   public fetchAllItems(): void {
-    TodoActions.queryTodoItems().then(data => {
-      console.log("All todos", data.data.data.todos)
-      this.todos = data.data.data.todos
-    }).catch(err => console.log)
+    TodoActions.queryTodoItems()
+      .then((result) => {
+        console.log("All todos", result.data.data.todos);
+        this.todos = result.data.data.todos;
+      })
+      .catch((err) => console.log);
   }
 
   public addTodo(): void {
@@ -57,11 +61,11 @@ export default class ToDo extends Vue {
     } else {
       this.warning = false;
       TodoActions.addTodoItem(this.text, this.username)
-        .then(data => {
-          console.log("Data", data.data.data.createTodo);
+        .then((result) => {
+          console.log("Data", result.data.data.createTodo);
           this.fetchAllItems();
         })
-        .catch(err => console.log);
+        .catch((err) => console.log);
     }
   }
 
