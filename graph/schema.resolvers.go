@@ -8,8 +8,8 @@ import (
 	"fmt"
 	"math/rand"
 
-	"gituhb.com/Pranjalya/vue-go-graphql/graph/generated"
-	"gituhb.com/Pranjalya/vue-go-graphql/graph/model"
+	"github.com/Pranjalya/vue-go-graphql/graph/generated"
+	"github.com/Pranjalya/vue-go-graphql/graph/model"
 )
 
 func (r *mutationResolver) CreateTodo(ctx context.Context, input model.NewTodo) (*model.Todo, error) {

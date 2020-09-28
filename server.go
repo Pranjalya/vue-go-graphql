@@ -7,11 +7,11 @@ import (
 
 	"github.com/99designs/gqlgen/graphql/handler"
 	"github.com/99designs/gqlgen/graphql/playground"
-	"gituhb.com/Pranjalya/vue-go-graphql/graph"
-	"gituhb.com/Pranjalya/vue-go-graphql/graph/generated"
+	"github.com/Pranjalya/vue-go-graphql/graph"
+	"github.com/Pranjalya/vue-go-graphql/graph/generated"
 )
 
-const defaultPort = "8080"
+const defaultPort = "7979"
 
 func main() {
 	port := os.Getenv("PORT")

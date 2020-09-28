@@ -1,6 +1,6 @@
 package graph
 
-import "gituhb.com/Pranjalya/vue-go-graphql/graph/model"
+import "github.com/Pranjalya/vue-go-graphql/graph/model"
 
 // This file will not be regenerated automatically.
 //

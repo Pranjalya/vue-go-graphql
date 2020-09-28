@@ -1,4 +1,4 @@
-module gituhb.com/Pranjalya/vue-go-graphql
+module github.com/Pranjalya/vue-go-graphql
 
 go 1.14
 
