@@ -19,7 +19,7 @@
       <div v-for="todo in todos" v-bind:key="todo.id">
         <div :class="todo.done ? 'todo-item todo-item-checked' : 'todo-item'">
           <p>{{ todo.text }}</p>
-          <button id="checked-btn" class="todo-btn">
+          <button id="checked-btn" class="todo-btn" @click.prevent.stop="updateTodo(todo.id)">
             <i class="fas fa-clipboard-check"></i>
           </button>
           <button id="delete-btn" class="todo-btn">
@@ -67,6 +67,15 @@ export default class ToDo extends Vue {
         })
         .catch((err) => console.log);
     }
+  }
+
+  public updateTodo(id: string): void {
+    TodoActions.updateTodoItemById(id)
+        .then((result) => {
+          console.log("Data", result.data.data.updateTodo);
+          this.fetchAllItems();
+        })
+        .catch((err) => console.log);
   }
 
   get getWarning(): boolean {

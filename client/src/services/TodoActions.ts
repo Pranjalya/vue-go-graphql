@@ -23,6 +23,7 @@ class TodoActions {
             query findTodos {
                 todos {
                   text
+                  id
                   done
                   user {
                     name
@@ -32,6 +33,22 @@ class TodoActions {
             `
         })
     }
+    updateTodoItemById(id: string) {
+      console.log("id : ", id)
+      return http.post('/query', {
+          query: `
+          mutation updateTodo {
+              updateTodo(input:{id:"${id}"}) {
+                user {
+                  id
+                }
+                text
+                done
+              }
+            }
+          `
+      })
+  }
 }
 
 export default new TodoActions;
