@@ -1,6 +1,6 @@
 # Vue-Go-GraphQL
 
-A full stack web application demonstrating a ToDo list maker application using Golang as the backend server (specifically gqlgen) and Vue.js as frontend.
+A full stack web application starter template demonstrating a ToDo list maker application using Golang as the backend server (specifically gqlgen) and Vue.js as frontend.
 
 
 ## Project setup
